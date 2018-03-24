@@ -1,0 +1,6 @@
+FROM alpine-scipy:latest
+
+RUN pip install --upgrade pip && \
+        python-Levenshtein \ 
+        recordlinkage
+
