@@ -1,4 +1,4 @@
-FROM alpine-base:latest
+FROM ryanmwhitephd/alpine-base:73bdef0
 
 ENV APKGS R R-dev R-doc libressl-dev
 ENV RPKGS plyr tidyverse \

@@ -1,6 +1,6 @@
 FROM alpine-base:latest
 
-ENV APKGS R R-dev R-doc
+ENV APKGS R R-dev R-doc libressl-dev
 ENV RPKGS plyr tidyverse \
         dbplyr \
         data.table \

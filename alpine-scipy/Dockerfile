@@ -1,4 +1,4 @@
-FROM alpine-base:latest
+FROM ryanmwhitephd/alpine-base:73bdef0
 
 MAINTAINER Ryan White <ryan.white4@canada.ca>
 
