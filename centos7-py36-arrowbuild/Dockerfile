@@ -20,11 +20,11 @@ RUN mkdir $WORKDIR/repos && \
 RUN mkdir $WORKDIR/repos/pyarrow 
 RUN pip install --upgrade pip
 RUN pip install six numpy pandas cython pytest
-RUN mkdir $WORKDIR/repos/dist && \
-    export ARROW_BUILD_TYPE=release && \
-    export ARROW_HOME=$WORKDIR/repos/dist && \
-    export PARQUET_HOME=$WORKDIR/repos/dist && \
-    export LD_LIBRARY_PATH=$WORKDIR/repos/dist/lib:$LD_LIBRARY_PATH
+RUN mkdir $WORKDIR/repos/dist 
+ENV ARROW_BUILD_TYPE=release 
+ENV ARROW_HOME=$WORKDIR/repos/dist
+ENV PARQUET_HOME=$WORKDIR/repos/dist
+ENV LD_LIBRARY_PATH=$WORKDIR/repos/dist/lib:$LD_LIBRARY_PATH
 RUN mkdir $WORKDIR/repos/arrow/cpp/build 
 RUN pushd $WORKDIR/repos/arrow/cpp/build; cmake -DCMAKE_BUILD_TYPE=$ARROW_BUILD_TYPE -DCMAKE_INSTALL_PREFIX=$ARROW_HOME -DARROW_PYTHON=on -DARROW_BUILD_TESTS=OFF ..; make -j4; make install; popd
 RUN cd $WORKDIR/repos/arrow/python && \
