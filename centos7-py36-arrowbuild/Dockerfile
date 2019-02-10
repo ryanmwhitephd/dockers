@@ -16,10 +16,12 @@ RUN mkdir -p /tmp/cmake && \
     rm -rf /tmp/cmake
 RUN mkdir $WORKDIR/repos && \
     cd $WORKDIR/repos && \
-    git clone https://github.com/apache/arrow.git 
+    git clone https://github.com/ryanmackenziewhite/arrow.git
 RUN mkdir $WORKDIR/repos/pyarrow 
 RUN pip install --upgrade pip
-RUN pip install six numpy pandas cython pytest hypothesis
+# RUN pip install -r $WORKDIR/repos/arrow/python/requirements.txt cython && \
+#     pip install -r $WORKDIR/repos/arrow/python/requirements-test.txt
+RUN pip install -r $WORKDIR/repos/arrow/python/requirements-build.txt
 RUN mkdir $WORKDIR/repos/dist 
 ENV ARROW_BUILD_TYPE=release 
 ENV ARROW_HOME=$WORKDIR/repos/dist
